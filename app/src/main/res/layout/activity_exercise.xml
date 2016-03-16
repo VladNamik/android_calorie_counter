@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/background_style"
+    tools:context="ru.startandroid.myapplication.ExerciseActivity"
+    >
+
+    <RelativeLayout
+        style="@style/header_style">
+        <TextView
+            style="@style/header_text"
+            android:text = "Упражнения">
+        </TextView>
+        <Button
+            style="@style/header_button"
+            android:id="@+id/from_exercises_to_menu"
+            android:text="В Меню">
+        </Button>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@color/my_db_menu_color"
+        android:id="@+id/db_exercise_menu">
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:layout_marginLeft="8dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/db_exercise_add"
+            android:onClick="onCreateExercise"
+            android:src="@drawable/add_item"/>
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:id="@+id/db_exercise_delete"
+            android:onClick="onDeleteExercise"
+            android:src="@drawable/delete_item"/>
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/db_exercise_delete"
+            android:layout_marginRight="16dp"
+            android:id="@+id/db_exercise_edit"
+            android:onClick="onEditExercise"
+            android:src="@drawable/edit"/>
+    </RelativeLayout>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/exercise_list_view">
+    </ListView>
+</LinearLayout>

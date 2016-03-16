@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="my_text_color">#FFFFFFFF</color>
+    <color name="my_background_color">#FF29475E</color>
+    <color name="my_header_color">#FF0D283D</color>
+    <color name="my_db_item_color">#aa9fb3</color>
+    <color name="my_db_menu_color">#0c2639</color>
+</resources>
