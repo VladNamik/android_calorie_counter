@@ -1,186 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/background_style"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_diary"
     tools:context=".activities.DiaryActivity"
-    style="@style/background_style">
-    <RelativeLayout
-        style="@style/header_style">
+    tools:showIn="@layout/activity_diary">
+
+    <RelativeLayout style="@style/header_style">
+
         <TextView
             style="@style/header_text"
-            android:text = "Дневник">
-        </TextView>
+            android:text="@string/diary"/>
+
         <Button
-            style="@style/header_button"
             android:id="@+id/from_diary_to_menu"
-            android:text="В Меню">
-        </Button>
+            style="@style/header_button"
+            android:text="@string/to_menu"/>
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp">
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="4dp">
+
         <ImageButton
+            android:id="@+id/diary_left_arrow"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/left_arrow"
-            android:scaleType="centerInside"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:background="@null"
-            android:id="@+id/diary_left_arrow"/>
+            android:scaleType="centerInside"
+            android:src="@drawable/left_arrow"
+            android:contentDescription="@string/previous_day"/>
+
         <TextView
+            android:id="@+id/diary_weekday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/diary_weekday"
-            android:text="Пятница"
+            android:layout_centerHorizontal="true"
             android:textColor="@color/my_text_color"
             android:textSize="20sp"
-            android:layout_centerHorizontal="true"/>
+            tools:text="Friday" />
+
         <EditText
+            android:id="@+id/diary_set_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/diary_weekday"
             android:layout_centerHorizontal="true"
-            android:text="25.12.2015"
-            android:id="@+id/diary_set_date"
-            android:textColor="@color/my_text_color"
-            android:inputType="date"/>
+            android:inputType="date"
+            tools:text="25.12.2015"
+            android:textColor="@color/my_text_color" />
+
         <ImageButton
+            android:id="@+id/diary_right_arrow"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/right_arrow"
-            android:scaleType="centerInside"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:background="@null"
-            android:id="@+id/diary_right_arrow"/>
+            android:scaleType="centerInside"
+            android:src="@drawable/right_arrow"
+            android:contentDescription="@string/next_day" />
     </RelativeLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TableLayout
-                android:paddingTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="10dp">
+
                 <TableRow>
+
                     <TextView
-                        android:text="Получено"
-                        style="@style/diary_table"/>
+                        style="@style/diary_table"
+                        android:text="@string/got" />
+
                     <TextView
-                        android:text="Потрачено"
-                        style="@style/diary_table"/>
+                        style="@style/diary_table"
+                        android:text="@string/spent" />
+
                     <TextView
-                        android:text="Дефицит"
-                        style="@style/diary_table"/>
+                        style="@style/diary_table"
+                        android:text="@string/gap" />
                 </TableRow>
+
                 <TableRow>
+
                     <TextView
-                        android:text="875 Ккал"
-                        android:gravity="center"
                         android:id="@+id/diary_calorie_get"
-                        style="@style/diary_table"/>
-                    <TextView
-                        android:text="875 Ккал"
+                        style="@style/diary_table"
                         android:gravity="center"
+                        tools:text="875 kcal" />
+
+                    <TextView
                         android:id="@+id/diary_calorie_spend"
-                        style="@style/diary_table"/>
-                    <TextView
-                        android:text="875 Ккал"
+                        style="@style/diary_table"
                         android:gravity="center"
+                        tools:text="875 kcal" />
+
+                    <TextView
                         android:id="@+id/diary_calorie_need"
-                        style="@style/diary_table"/>
+                        style="@style/diary_table"
+                        android:gravity="center"
+                        tools:text="875 kcal" />
                 </TableRow>
             </TableLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:paddingTop="30dp">
+
                 <ImageButton
+                    android:id="@+id/diary_dish_add_button"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginRight="30dp"
-                    android:src="@drawable/add_dish"
-                    android:scaleType="centerInside"
+                    android:layout_marginEnd="30dp"
                     android:background="@null"
-                    android:id="@+id/diary_dish_add_button"/>
+                    android:scaleType="centerInside"
+                    android:src="@drawable/add_dish"
+                    android:contentDescription="@string/add_dish"/>
+
                 <ImageButton
+                    android:id="@+id/diary_exercise_add_button"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_alignParentRight="true"
                     android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
+                    android:background="@null"
                     android:scaleType="centerInside"
                     android:src="@drawable/add_exercise"
-                    android:background="@null"
-                    android:id="@+id/diary_exercise_add_button"/>
+                    android:contentDescription="@string/add_exercise"/>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1.5"/>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:id="@+id/diary_dishes_view_button"
-                    android:text="Еда"
-                    android:onClick="onViewDayDishes"
-                    android:textColor="@color/my_text_color"
-                    android:textAllCaps="false"
-                    android:background="@color/my_header_color"/>
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5" />
+
                 <Button
+                    android:id="@+id/diary_dishes_view_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:id="@+id/diary_exercises_view_button"
-                    android:text="Упражнения"
-                    android:onClick="onViewDayExercises"
-                    android:textColor="@color/my_text_color"
+                    android:background="@color/my_header_color"
+                    android:onClick="onViewDayDishes"
+                    android:text="@string/food"
                     android:textAllCaps="false"
-                    android:background="@color/my_header_color"/>
+                    android:textColor="@color/my_text_color" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.5" />
+
+                <Button
+                    android:id="@+id/diary_exercises_view_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@color/my_header_color"
+                    android:onClick="onViewDayExercises"
+                    android:text="@string/exercises"
+                    android:textAllCaps="false"
+                    android:textColor="@color/my_text_color" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1.5" />
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:textSize="20sp"
-                android:textColor="@color/my_text_color"
                 android:layout_gravity="center_horizontal"
-                android:text="Заметки"/>
+                android:layout_marginTop="20dp"
+                android:text="@string/notes"
+                android:textColor="@color/my_text_color"
+                android:textSize="20sp" />
+
             <EditText
+                android:id="@+id/diary_record"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp"
-                android:hint="Ваши заметки"
-                android:textSize="14dp"
+                android:hint="@string/your_notes"
                 android:textColor="@color/my_text_color"
                 android:textColorHint="@color/my_text_color"
-                android:id="@+id/diary_record"/>
+                android:textSize="14sp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

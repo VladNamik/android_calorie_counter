@@ -8,12 +8,12 @@
         style="@style/header_style">
         <TextView
             style="@style/header_text"
-            android:text = "Профиль">
+            android:text = "@string/profile">
         </TextView>
         <Button
             style="@style/header_button"
             android:id="@+id/from_profile_to_menu"
-            android:text="В Меню">
+            android:text="@string/to_menu">
         </Button>
     </RelativeLayout>
     <ScrollView
@@ -30,7 +30,7 @@
                 <TableRow
                     style="@style/table_row_profile_style">
                     <TextView
-                        android:text="Пол:"
+                        android:text="@string/sex"
                         style="@style/first_text_in_row_profile_style"/>
                     <RadioGroup
                         android:orientation="horizontal"
@@ -38,7 +38,7 @@
                         <RadioButton
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            android:text="мужской"
+                            android:text="@string/male"
                             android:checked="true"
                             android:textColor="@color/my_text_color"
                             android:id="@+id/profile_man_radio_button"
@@ -47,8 +47,9 @@
                         <RadioButton
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            android:text="женский"
+                            android:text="@string/female"
                             android:layout_marginLeft="10dp"
+                            android:layout_marginStart="10dp"
                             android:textColor="@color/my_text_color"
                             android:id="@+id/profile_woman_radio_button"
                             android:onClick="onGenderRadioButtonClick"/>
@@ -57,44 +58,44 @@
                 <TableRow
                     style="@style/table_row_profile_style">
                     <TextView
-                        android:text="Рост:"
+                        android:text="@string/growth"
                         style="@style/first_text_in_row_profile_style"/>
                     <EditText
                         android:id="@+id/profile_height"
-                        android:text="175"
+                        tools:text="175"
                         android:inputType="number"
                         android:onClick="onHeightChangeButtonClick"
                         android:textColor="@color/my_text_color"/>
                     <TextView
-                        android:text="см"
+                        android:text="@string/centimeters"
                         android:textColor="@color/my_text_color"/>
                 </TableRow>
                 <TableRow
                     style="@style/table_row_profile_style">
                     <TextView
-                        android:text="Вес:"
+                        android:text="@string/weight"
                         style="@style/first_text_in_row_profile_style"/>
                     <EditText
                         android:id="@+id/profile_weight"
-                        android:text="70"
+                        tools:text="70"
                         android:onClick="onWeightChangeButtonClick"
                         style="@style/edit_text_profile_style"/>
                     <TextView
-                        android:text="кг"
+                        android:text="@string/kilograms"
                         android:textColor="@color/my_text_color"/>
                 </TableRow>
                 <TableRow
                     style="@style/table_row_profile_style" >
                     <TextView
-                        android:text="Возраст:"
+                        android:text="@string/age"
                         style="@style/first_text_in_row_profile_style"/>
                     <EditText
                         android:id="@+id/profile_age"
-                        android:text="18"
+                        tools:text="18"
                         android:onClick="onAgeChangeButtonClick"
                         style="@style/edit_text_profile_style"/>
                     <TextView
-                        android:text="лет"
+                        android:text="@string/years"
                         android:textColor="@color/my_text_color"/>
                 </TableRow>
             </TableLayout>
@@ -104,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/profile_table_layout"
-                android:text="Оптимальное потребление калорий в день:"
+                android:text="@string/daily_calorie_amount"
                 android:paddingTop="40dp"
                 />
             <TextView
@@ -113,7 +114,7 @@
                 style="@style/first_text_in_row_profile_style"
                 android:id="@+id/profile_optimal_kal_number"
                 android:layout_margin="8dp"
-                android:text=" Ккал"
+                android:text="@string/kilocalories"
                 android:textStyle="bold"
                 android:layout_below="@id/profile_optimal_kal"/>
             <TextView
@@ -122,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/profile_optimal_kal_number"
-                android:text="Цель (калорий в день) :"/>
+                android:text="@string/calories_goal"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,6 +135,9 @@
                     style="@style/first_text_in_row_profile_style"
                     android:id="@+id/profile_aim_kal_number"
                     android:paddingRight="0dp"
+                    android:paddingEnd="0dp"
+                    android:paddingLeft="0dp"
+                    android:paddingStart="0dp"
                     android:textStyle="bold"
                     android:inputType="number"
                     android:onClick="onAimCalorieChangeButtonClick"/>
@@ -141,10 +145,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/first_text_in_row_profile_style"
-                    android:text=" Ккал"
-                    android:layout_toRightOf="@id/profile_aim_kal_number"
+                    android:text="@string/kilocalories"
                     android:textStyle="bold"
+                    android:paddingRight="0dp"
+                    android:paddingEnd="0dp"
                     android:paddingLeft="0dp"
+                    android:paddingStart="0dp"
                 />
             </LinearLayout>
         </RelativeLayout>

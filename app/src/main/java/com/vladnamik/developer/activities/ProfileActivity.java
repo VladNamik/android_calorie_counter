@@ -27,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
         ((RadioButton) findViewById(R.id.profile_woman_radio_button)).setChecked(!profile.getGender());
         ((EditText) findViewById(R.id.profile_aim_kal_number)).setText(profile.getAimCalorie() + "");
         optimalCalorieNumber = ((TextView) findViewById(R.id.profile_optimal_kal_number));
-        optimalCalorieNumber.setText(profile.calculateCalories() + " Ккал");
+        optimalCalorieNumber.setText(profile.calculateCalories() + " " + getString(R.string.kilocalories));
     }
 
     public void onGenderRadioButtonClick(View view) {
@@ -39,31 +39,31 @@ public class ProfileActivity extends AppCompatActivity {
                 profile.setGender(this, false);
                 break;
         }
-        optimalCalorieNumber.setText(profile.calculateCalories() + " Ккал");
+        optimalCalorieNumber.setText(profile.calculateCalories() + " " + getString(R.string.kilocalories));
         optimalCalorieNumber.requestLayout();
     }
 
     public void onHeightChangeButtonClick(View view) {
         profile.setHeight(this, Integer.parseInt(((EditText) view).getText().toString()));
-        optimalCalorieNumber.setText(profile.calculateCalories() + " Ккал");
+        optimalCalorieNumber.setText(profile.calculateCalories() + " " + getString(R.string.kilocalories));
         optimalCalorieNumber.requestLayout();
     }
 
     public void onWeightChangeButtonClick(View view) {
         profile.setWeight(this, Integer.parseInt(((EditText) view).getText().toString()));
-        optimalCalorieNumber.setText(profile.calculateCalories() + " Ккал");
+        optimalCalorieNumber.setText(profile.calculateCalories() + " " + getString(R.string.kilocalories));
         optimalCalorieNumber.requestLayout();
     }
 
     public void onAgeChangeButtonClick(View view) {
         profile.setAge(this, Integer.parseInt(((EditText) view).getText().toString()));
-        optimalCalorieNumber.setText(profile.calculateCalories() + " Ккал");
+        optimalCalorieNumber.setText(profile.calculateCalories() + " " + getString(R.string.kilocalories));
         optimalCalorieNumber.requestLayout();
     }
 
     public void onAimCalorieChangeButtonClick(View view) {
         profile.setAimCalorie(this, Integer.parseInt(((EditText) view).getText().toString()));
-        optimalCalorieNumber.setText(profile.calculateCalories() + " Ккал");
+        optimalCalorieNumber.setText(profile.calculateCalories() + " " + getString(R.string.kilocalories));
         optimalCalorieNumber.requestLayout();
     }
 

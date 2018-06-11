@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class ExerciseActivity extends AppCompatActivity {
-    DataBase db;//объект БД
+    DataBase db;
     Map<String, Object> map;
-    ArrayList<Map<String, Object>> data;//основные данные
-    SimpleAdapter sAdapter;//адаптер
+    ArrayList<Map<String, Object>> data; // main data
+    SimpleAdapter sAdapter;
     long selectedElementId = -1;
     ListView listView;
 
@@ -33,13 +33,13 @@ public class ExerciseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exercise);
         findViewById(R.id.from_exercises_to_menu).setOnClickListener(new ToWindowOnClickWithClosing(this, MyMenuActivity.class));
 
-        db = DataBase.getDataBase(this);//открваем БД
+        db = DataBase.getDataBase(this); // open DB
 
         data = DataBase.cursorToArrayList(db.getExercises());
 
         // формируем столбцы сопоставления
-        String[] from = new String[]{DataBase.EXERCISE_COLUMN_NAME};//названия колонок
-        int[] to = new int[]{R.id.db_item_name};//места для записи (View id)
+        String[] from = new String[]{DataBase.EXERCISE_COLUMN_NAME};
+        int[] to = new int[]{R.id.db_item_name};
 
         sAdapter = new SimpleAdapter(this, data, R.layout.database_item, from, to);
         listView = (ListView) findViewById(R.id.exercise_list_view);
@@ -55,10 +55,10 @@ public class ExerciseActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, "По алфавиту");
-        menu.add(0, 2, 1, "По коэффициенту времени");
-        menu.add(0, 3, 2, "По коэффициенту количества");
-        menu.add(0, 4, 3, "По id");
+        menu.add(0, 1, 0, getString(R.string.order_by_alphabet));
+        menu.add(0, 2, 1, getString(R.string.order_by_time_coeff));
+        menu.add(0, 3, 2, getString(R.string.order_by_quantity_coeff));
+        menu.add(0, 4, 3, getString(R.string.order_by_id));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -66,16 +66,16 @@ public class ExerciseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case 1:
-                DataBase.exercisesSortId = 1;//по алфавиту
+                DataBase.exercisesSortId = 1; // by alphabet
                 break;
             case 2:
-                DataBase.exercisesSortId = 2;//По коэффициенту времени
+                DataBase.exercisesSortId = 2; // by time coeff
                 break;
             case 3:
-                DataBase.exercisesSortId = 3;//По коэффициенту количества
+                DataBase.exercisesSortId = 3; // by quantity coeff
                 break;
             case 4:
-                DataBase.exercisesSortId = 0;//По id
+                DataBase.exercisesSortId = 0; // by id
                 break;
         }
         data.clear();
@@ -86,7 +86,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     public void onDeleteExercise(View view) {
         if (selectedElementId < 0)
-            Toast.makeText(this, "Выберите упражнение", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.pick_exercise), Toast.LENGTH_SHORT).show();
         else {
             String exerciseName = (String) data.get((int) selectedElementId).get(DataBase.EXERCISE_COLUMN_NAME);
             db.deleteExercise(exerciseName);
@@ -98,10 +98,9 @@ public class ExerciseActivity extends AppCompatActivity {
 
     public void onEditExercise(View view) {
         if (selectedElementId < 0) {
-            Toast.makeText(this, "Выберите упражнение", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.pick_exercise), Toast.LENGTH_SHORT).show();
             return;
         }
-        //заполняем новыми данными
         Exercise exercise = new Exercise();
         map = data.get((int) selectedElementId);
         exercise.setName(map.get(DataBase.EXERCISE_COLUMN_NAME).toString());
@@ -113,7 +112,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
     public void onCreateExercise(View view) {
         Intent intent = new Intent(this, ExerciseEditorActivity.class);
-        startActivity(intent);//передаём управление редактору
+        startActivity(intent);
         selectedElementId = -1;
         ;
     }

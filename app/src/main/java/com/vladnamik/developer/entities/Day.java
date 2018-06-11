@@ -13,8 +13,8 @@ import java.util.Map;
 
 public class Day {
     public static final SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-    private static final String[] DAYS_OF_WEEK = {"Суббота", "Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"};
-    private static final String[] MONTH_OF_YEAR = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
+    private static final String[] DAYS_OF_WEEK = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+    private static final String[] MONTH_OF_YEAR = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     private final String dayOfWeek;
     private final MyDate date;
     private static Calendar calendar = Calendar.getInstance();

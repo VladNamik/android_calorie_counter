@@ -7,11 +7,11 @@ import android.content.SharedPreferences;
 import com.vladnamik.developer.activities.ProfileActivity;
 
 public class Profile {
-    private boolean gender = true;//пол
-    private int age = 18;//возраст
-    private int height = 175;//рост
-    private int weight = 70;//вес
-    private int aimCalorie = 1500;//цель
+    private boolean gender = true;
+    private int age = 18;
+    private int height = 175;
+    private int weight = 70;
+    private int aimCalorie = 1500;
     private static Profile profile = null;
 
     private Profile(Context context) {

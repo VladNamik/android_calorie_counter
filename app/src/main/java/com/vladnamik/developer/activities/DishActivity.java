@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class DishActivity extends AppCompatActivity{
-    DataBase db;//объект БД
+    DataBase db; // object of database
     Map<String, Object> map;
-    ArrayList<Map<String, Object>> data;//основные данные
-    SimpleAdapter sAdapter;//адаптер
+    ArrayList<Map<String, Object>> data; // main data
+    SimpleAdapter sAdapter;
     long selectedElementId=-1;
     ListView listView;
 
@@ -33,15 +33,15 @@ public class DishActivity extends AppCompatActivity{
         setContentView(R.layout.activity_dish);
         findViewById(R.id.from_dishes_to_menu).setOnClickListener(new ToWindowOnClickWithClosing(this, MyMenuActivity.class));
 
-        db = DataBase.getDataBase(this);//открываем БД
+        db = DataBase.getDataBase(this); // open DB
         data=DataBase.cursorToArrayList(db.getDishes());
 
-        // формируем столбцы сопоставления
-        String[] from = new String[] {DataBase.DISH_COLUMN_NAME, DataBase.DISH_COLUMN_CALORIES_PER_100_GM };//названия колонок
-        int[] to = new int[] { R.id.db_item_name, R.id.db_item_right_text};//места для записи (View id)
+        // collation columns forming
+        String[] from = new String[] {DataBase.DISH_COLUMN_NAME, DataBase.DISH_COLUMN_CALORIES_PER_100_GM }; // columns names
+        int[] to = new int[] { R.id.db_item_name, R.id.db_item_right_text}; // places to write (View id)
 
         sAdapter = new SimpleAdapter(this, data ,  R.layout.database_item, from, to);
-        listView= (ListView) findViewById(R.id.dish_list_view);
+        listView= findViewById(R.id.dish_list_view);
         listView.setAdapter(sAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -56,9 +56,9 @@ public class DishActivity extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, 1, 0, "По алфавиту");
-        menu.add(0, 2, 1, "По калорийности");
-        menu.add(0, 3, 2, "По id");
+        menu.add(0, 1, 0, getString(R.string.order_by_alphabet));
+        menu.add(0, 2, 1, getString(R.string.order_by_caloricity));
+        menu.add(0, 3, 2, getString(R.string.order_by_id));
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -66,11 +66,11 @@ public class DishActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
         {
-            case 1: DataBase.dishSortId=1;//по алфавиту
+            case 1: DataBase.dishSortId=1; // by alphabet
                 break;
-            case 2: DataBase.dishSortId=2;//По калорийности
+            case 2: DataBase.dishSortId=2; // by caloricity
                 break;
-            case 3: DataBase.dishSortId=0;//По id
+            case 3: DataBase.dishSortId=0; // by id
                 break;
         }
         data.clear();
@@ -82,7 +82,7 @@ public class DishActivity extends AppCompatActivity{
     public void onDeleteDish(View view)
     {
         if(selectedElementId<0)
-            Toast.makeText(this, "Выберите блюдо", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.pick_dish), Toast.LENGTH_SHORT).show();
         else
         {
             String dishName=(String)data.get((int)selectedElementId).get(DataBase.DISH_COLUMN_NAME);
@@ -96,10 +96,10 @@ public class DishActivity extends AppCompatActivity{
     public void onEditDish(View view)
     {
         if (selectedElementId<0) {
-            Toast.makeText(this, "Выберите блюдо", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.pick_dish), Toast.LENGTH_SHORT).show();
             return;
         }
-        //заполняем новыми данными
+        //fill with new data
         Dish dish = new Dish();
         map=data.get((int)selectedElementId);
         dish.setName(map.get(DataBase.DISH_COLUMN_NAME).toString());
@@ -111,8 +111,8 @@ public class DishActivity extends AppCompatActivity{
     public void onCreateDish(View view)
     {
         Intent intent = new Intent(this, DishesEditorActivity.class);
-        startActivity(intent);//передаём управление редактору
-        selectedElementId=-1;;
+        startActivity(intent); // transfer control to editor
+        selectedElementId=-1;
     }
 
     @Override
@@ -126,6 +126,6 @@ public class DishActivity extends AppCompatActivity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        db.close();//закрываем БД
+        db.close(); // close DB
     }
 }

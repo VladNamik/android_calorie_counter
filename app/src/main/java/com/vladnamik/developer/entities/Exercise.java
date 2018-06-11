@@ -22,10 +22,6 @@ public class Exercise {
         return name;
     }
 
-    public String getFormula() {
-        return timeCoeff + "t*w" + "+" + quantityCoeff + "q*w";
-    }
-
     public int parseCaloriesFromFormula(int weight, int time, int quantity) {
         return weight * timeCoeff * time + weight * quantityCoeff * quantity;
     }

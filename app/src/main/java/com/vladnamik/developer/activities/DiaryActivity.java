@@ -27,7 +27,7 @@ import java.util.Map;
 
 public class DiaryActivity extends AppCompatActivity {
     Profile profile;
-    Day viewDay;//просматриваемый день
+    Day viewDay; // viewed day
     DataBase db;
     SimpleAdapter dishesAdapter;
     ArrayList<Map<String, Object>> dishesData;
@@ -77,21 +77,21 @@ public class DiaryActivity extends AppCompatActivity {
 
         profile = Profile.getProfile(this);
         db = DataBase.getDataBase(this);
-        setViewDay(new MyDate());//устанавливаем текущую дату
+        setViewDay(new MyDate()); // set current date
 
-        //съеденные блюда
+        // eaten dishes
         dishesData = DataBase.cursorToArrayList(db.getAllDayDishes(viewDay.getDate()));
-        // формируем столбцы сопоставления
-        String[] from = new String[]{DataBase.DISH_COLUMN_NAME, DataBase.DAYS_DISH_COLUMN_WEIGHT};//названия колонок
-        int[] to = new int[]{R.id.db_item_name, R.id.db_item_right_text};//места для записи (View id)
+        // collation columns forming
+        String[] from = new String[]{DataBase.DISH_COLUMN_NAME, DataBase.DAYS_DISH_COLUMN_WEIGHT};//columns names
+        int[] to = new int[]{R.id.db_item_name, R.id.db_item_right_text}; // places to write (View id)
 
         dishesAdapter = new SimpleAdapter(this, dishesData, R.layout.database_item, from, to);
 
 
-        //упражнения за день
+        // exercises for day
         exercisesData = DataBase.cursorToArrayList(db.getAllDayExercises(viewDay.getDate()));
-        // формируем столбцы сопоставления
-        from = new String[]{DataBase.EXERCISE_COLUMN_NAME, DataBase.DAYS_EXERCISE_COLUMN_QUANTITY};//названия колонок
+        // collation columns forming
+        from = new String[]{DataBase.EXERCISE_COLUMN_NAME, DataBase.DAYS_EXERCISE_COLUMN_QUANTITY};//columns names
 
         exercisesAdapter = new SimpleAdapter(this, exercisesData, R.layout.database_item, from, to);
 
@@ -108,12 +108,12 @@ public class DiaryActivity extends AppCompatActivity {
                 return new DatePickerDialog(this, myCallBack, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
             case VIEW_DISHES_DIALOG:
                 adb = new AlertDialog.Builder(this);
-                adb.setTitle("Съеденные блюда");
+                adb.setTitle(getString(R.string.eaten_dishes));
                 adb.setAdapter(dishesAdapter, null);
                 return adb.create();
             case VIEW_EXERCISES_DIALOG:
                 adb = new AlertDialog.Builder(this);
-                adb.setTitle("Упражнения за день");
+                adb.setTitle(getString(R.string.exercises_per_day));
                 adb.setAdapter(exercisesAdapter, null);
                 return adb.create();
         }
@@ -144,9 +144,9 @@ public class DiaryActivity extends AppCompatActivity {
             try {
                 changeViewDay(new MyDate(Day.format.parse(newDate)));
             } catch (ParseException e) {
-                Toast.makeText(DiaryActivity.this, "Не верно введена дата \n Введите в виде 25.12.2015", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DiaryActivity.this, getString(R.string.invalid_date), Toast.LENGTH_SHORT).show();
             } catch (NullPointerException e) {
-                Toast.makeText(DiaryActivity.this, "Год должен находится в диапазоне \n от 2000 до 2100", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DiaryActivity.this, getString(R.string.invalid_year), Toast.LENGTH_SHORT).show();
             }
         }
     };

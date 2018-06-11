@@ -1,4 +1,103 @@
 <resources>
     <string name="app_name">CCounter</string>
     <string name="action_settings">Settings</string>
+
+    <!--General-->
+    <string name="seconds">sec</string>
+    <string name="minutes">min</string>
+    <string name="times">times</string>
+    <string name="centimeters">cm</string>
+    <string name="kilograms">kg</string>
+    <string name="years">years</string>
+    <string name="kilocalories">kcal</string>
+    <string name="grams">gm</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="set">Set</string>
+    <string name="create">Create</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="to_menu">To Menu</string>
+    <string name="to_diary">To Diary</string>
+
+    <string name="name">Name</string>
+
+    <string name="invalid_date">Invalid date entered
+ Enter in the form like 25.12.2015</string>
+    <string name="invalid_year">Year is in range
+ from 2000 to 2100</string>
+
+    <string name="order_by_alphabet">By alphabet</string>
+    <string name="order_by_caloricity">By caloricity</string>
+    <string name="order_by_time_coeff">By time coeff</string>
+    <string name="order_by_quantity_coeff">By quantity coeff</string>
+    <string name="order_by_id">By id</string>
+
+    <string name="for_day">For day</string>
+    <string name="for_week">For week</string>
+    <string name="for_month">For month</string>
+    <string name="for_year">For year</string>
+
+    <!--Statistic-->
+    <string name="statistic">Statistic</string>
+    <string name="day_diagram_description">Calories collected per day</string>
+    <string name="week_diagram_description">Calories collected per week</string>
+    <string name="month_diagram_description">Calories collected per month</string>
+    <string name="year_diagram_description">Calories per month on average for each month</string>
+
+    <!--Profile-->
+    <string name="profile">Profile</string>
+    <string name="sex">Sex</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="growth">Growth</string>
+    <string name="weight">Weight</string>
+    <string name="age">Age</string>
+    <string name="daily_calorie_amount">Daily calorie amount</string>
+    <string name="calories_goal">Goal (calories per day)</string>
+
+
+    <!--Diary-->
+    <string name="diary">Diary</string>
+    <string name="got">Got</string>
+    <string name="spent">Spent</string>
+    <string name="gap">Gap</string>
+    <string name="food">Food</string>
+    <string name="notes">Notes</string>
+    <string name="your_notes">Your notes</string>
+
+    <string name="previous_day">To previous day</string>
+    <string name="next_day">To next day</string>
+    <string name="add_dish">Add dish</string>
+    <string name="add_exercise">Add exercise</string>
+
+    <string name="eaten_dishes">Eaten dishes</string>
+    <string name="exercises_per_day">Exercises per day</string>
+
+    <!--Menu-->
+    <string name="menu">Menu</string>
+    <string name="exit">Exit</string>
+
+    <!--Dishes-->
+    <string name="dishes">Dishes</string>
+    <string name="pick_dish">Pick dish</string>
+    <string name="dish_name">Dish name</string>
+    <string name="calories_per_100_gm">Calories per 100 gm</string>
+    <string name="enter_dish_weight">Enter weight</string>
+
+    <!--Exercises-->
+    <string name="exercises">Exercises</string>
+    <string name="pick_exercise">Pick exercise</string>
+    <string name="exercise_name">Exercise name</string>
+
+    <string name="exercise_formula">Formula</string>
+    <string name="exercise_formula_p1">*t*w + </string>
+    <string name="exercise_formula_p2">*q*w</string>
+    <string name="exercise_formula_description">Where</string>
+    <string name="exercise_formula_description_weight">w — your weight (kg)</string>
+    <string name="exercise_formula_description_time">t — time (sec)</string>
+    <string name="exercise_formula_description_quantity">q — sets quantity</string>
+    <string name="enter_exercise_time_quantity">Enter time and quantity</string>
+
+
 </resources>

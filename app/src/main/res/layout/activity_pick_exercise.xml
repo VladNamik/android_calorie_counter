@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Выберите упражнение"
+            android:text="@string/pick_exercise"
             android:textSize="20sp"
             android:layout_centerVertical="true"
             android:id="@+id/pick_exercise_picked_exercise_name"
@@ -28,43 +28,49 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="0"
+            tools:text="0"
             android:inputType="number"
             android:onClick="onSetPickedExercise"
             android:textColor="@color/my_text_color"
             android:layout_centerVertical="true"
             android:id="@+id/pick_exercise_picked_exercise_time"
             android:layout_toRightOf="@id/pick_exercise_picked_exercise_name"
-            android:layout_marginLeft="20dp"/>
+            android:layout_toEndOf="@id/pick_exercise_picked_exercise_name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="сек"
+            android:text="@string/seconds"
             android:textSize="16sp"
             android:layout_centerVertical="true"
             android:id="@+id/pick_exercise_picked_exercise_time_text"
             android:layout_toRightOf="@id/pick_exercise_picked_exercise_time"
+            android:layout_toEndOf="@id/pick_exercise_picked_exercise_time"
             android:textColor="@color/my_text_color"/>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="0"
+            tools:text="0"
             android:inputType="number"
             android:onClick="onSetPickedExercise"
             android:textColor="@color/my_text_color"
             android:layout_centerVertical="true"
             android:id="@+id/pick_exercise_picked_exercise_quantity"
             android:layout_toRightOf="@id/pick_exercise_picked_exercise_time_text"
-            android:layout_marginLeft="0dp"/>
+            android:layout_toEndOf="@id/pick_exercise_picked_exercise_time_text"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="раз"
+            android:text="@string/times"
             android:textSize="16sp"
             android:layout_centerVertical="true"
             android:id="@+id/pick_exercise_picked_exercise_quantity_text"
             android:layout_toRightOf="@id/pick_exercise_picked_exercise_quantity"
+            android:layout_toEndOf="@id/pick_exercise_picked_exercise_quantity"
             android:textColor="@color/my_text_color"/>
     </RelativeLayout>
     <ListView
@@ -83,19 +89,24 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:background="@null"
             android:src="@drawable/ok_button"
             android:scaleType="centerInside"
-            android:id="@+id/pick_exercise_OK_button"/>
+            android:id="@+id/pick_exercise_OK_button"
+            android:contentDescription="@string/set"/>
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp"
             android:background="@null"
             android:src="@drawable/cancel_button"
             android:scaleType="centerInside"
             android:layout_toRightOf="@id/pick_exercise_OK_button"
-            android:id="@+id/pick_exercise_cancel_button"/>
+            android:layout_toEndOf="@id/pick_exercise_OK_button"
+            android:id="@+id/pick_exercise_cancel_button"
+            android:contentDescription="@string/cancel"/>
     </RelativeLayout>
 
 </LinearLayout>

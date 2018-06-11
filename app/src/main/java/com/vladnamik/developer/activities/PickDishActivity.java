@@ -21,10 +21,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class PickDishActivity extends AppCompatActivity {
-    private DataBase db;//объект БД
+    private DataBase db;
     private Map<String, Object> map;
-    private ArrayList<Map<String, Object>> data;//основные данные
-    private SimpleAdapter sAdapter;//адаптер
+    private ArrayList<Map<String, Object>> data;
+    private SimpleAdapter sAdapter;
     private long selectedElementId = -1;
     ListView listView;
     public static MyDate date;
@@ -35,15 +35,14 @@ public class PickDishActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_dish);
 
-        db = DataBase.getDataBase(this);//открваем БД
+        db = DataBase.getDataBase(this);
         data = DataBase.cursorToArrayList(db.getDishes());
 
-        // формируем столбцы сопоставления
-        String[] from = new String[]{DataBase.DISH_COLUMN_NAME, DataBase.DISH_COLUMN_CALORIES_PER_100_GM};//названия колонок
-        int[] to = new int[]{R.id.db_item_name, R.id.db_item_right_text};//места для записи (View id)
+        String[] from = new String[]{DataBase.DISH_COLUMN_NAME, DataBase.DISH_COLUMN_CALORIES_PER_100_GM};
+        int[] to = new int[]{R.id.db_item_name, R.id.db_item_right_text};
 
         sAdapter = new SimpleAdapter(this, data, R.layout.database_item, from, to);
-        listView = (ListView) findViewById(R.id.pick_dish_list);
+        listView = findViewById(R.id.pick_dish_list);
         listView.setAdapter(sAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -89,14 +88,14 @@ public class PickDishActivity extends AppCompatActivity {
     protected Dialog onCreateDialog(int id) {
         if (id == SET_WEIGHT) {
             final Dialog dialog = new Dialog(this);
-            dialog.setTitle("Введите вес");
+            dialog.setTitle(getString(R.string.enter_dish_weight));
             dialog.setContentView(R.layout.set_weight_dialog);
-            Button okButton = (Button) dialog.findViewById(R.id.set_weight_dialog_OK_button);
-            Button cancelButton = (Button) dialog.findViewById(R.id.set_weight_dialog_cancel_button);
-            final NumberPicker np1 = (NumberPicker) dialog.findViewById(R.id.set_weight_dialog_number_1);
-            final NumberPicker np2 = (NumberPicker) dialog.findViewById(R.id.set_weight_dialog_number_2);
-            final NumberPicker np3 = (NumberPicker) dialog.findViewById(R.id.set_weight_dialog_number_3);
-            final NumberPicker np4 = (NumberPicker) dialog.findViewById(R.id.set_weight_dialog_number_4);
+            Button okButton = dialog.findViewById(R.id.set_weight_dialog_OK_button);
+            Button cancelButton = dialog.findViewById(R.id.set_weight_dialog_cancel_button);
+            final NumberPicker np1 = dialog.findViewById(R.id.set_weight_dialog_number_1);
+            final NumberPicker np2 = dialog.findViewById(R.id.set_weight_dialog_number_2);
+            final NumberPicker np3 = dialog.findViewById(R.id.set_weight_dialog_number_3);
+            final NumberPicker np4 = dialog.findViewById(R.id.set_weight_dialog_number_4);
             np1.setMaxValue(9);
             np1.setMinValue(0);
             np2.setMaxValue(9);

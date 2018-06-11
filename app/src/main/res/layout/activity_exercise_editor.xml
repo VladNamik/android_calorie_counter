@@ -16,7 +16,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -26,14 +26,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Название:"
+            android:text="@string/name"
             android:textColor="@color/my_text_color"
             android:textSize="20sp"/>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:hint="Название упражнения"
+            android:layout_marginStart="10dp"
+            android:hint="@string/exercise_name"
             android:id="@+id/exercise_editor_exercise_name"
             android:textColor="@color/my_text_color"
             android:textColorHint="@color/my_text_color"/>
@@ -43,18 +44,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textColor="@color/my_text_color"
-        android:text="Формула:"
+        android:text="@string/exercise_formula"
         android:textSize="20sp"/>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:orientation="horizontal">
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
+            tools:text="0"
             android:id="@+id/exercise_editor_t_coeff"
             android:inputType="number"
             android:textSize="20sp"
@@ -64,12 +66,12 @@
             android:layout_height="wrap_content"
             android:textColor="@color/my_text_color"
             android:textSize="20sp"
-            android:text="*t*w + "/>
+            android:text="@string/exercise_formula_p1"/>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/exercise_editor_q_coeff"
-            android:text="0"
+            tools:text="0"
             android:inputType="number"
             android:textSize="20sp"
             android:textColor="@color/my_text_color"/>
@@ -78,7 +80,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/my_text_color"
             android:textSize="20sp"
-            android:text = "*q*w"/>
+            android:text = "@string/exercise_formula_p2"/>
     </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -86,31 +88,34 @@
         android:layout_marginTop="40dp"
         android:textColor="@color/my_text_color"
         android:textSize="20sp"
-        android:text="Где:"/>
+        android:text="@string/exercise_formula_description"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:textColor="@color/my_text_color"
         android:textSize="20sp"
-        android:text="w — ваш вес (кг)"/>
+        android:text="@string/exercise_formula_description_weight"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:textColor="@color/my_text_color"
         android:textSize="20sp"
-        android:text="t — время (сек)"/>
+        android:text="@string/exercise_formula_description_time"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:textColor="@color/my_text_color"
         android:textSize="20sp"
-        android:text="q — количество подходов"/>
+        android:text="@string/exercise_formula_description_quantity"/>
         </LinearLayout>
     </ScrollView>
     <RelativeLayout
@@ -122,18 +127,23 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:background="@null"
             android:src="@drawable/ok_button"
             android:scaleType="centerInside"
-            android:id="@+id/exercise_editor_OK_button"/>
+            android:id="@+id/exercise_editor_OK_button"
+            android:contentDescription="@string/set"/>
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp"
             android:background="@null"
             android:src="@drawable/cancel_button"
             android:scaleType="centerInside"
             android:layout_toRightOf="@id/exercise_editor_OK_button"
-            android:id="@+id/exercise_editor_cancel_button"/>
+            android:layout_toEndOf="@id/exercise_editor_OK_button"
+            android:id="@+id/exercise_editor_cancel_button"
+            android:contentDescription="@string/cancel"/>
     </RelativeLayout>
 </LinearLayout>

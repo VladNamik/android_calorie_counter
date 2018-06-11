@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Выберите блюдо"
+            android:text="@string/pick_dish"
             android:textSize="20sp"
             android:layout_centerVertical="true"
             android:id="@+id/pick_dish_picked_dish_name"
@@ -28,22 +28,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
-            android:text="0"
+            tools:text="0"
             android:inputType="number"
             android:onClick="onSetPickedDishWeight"
             android:textColor="@color/my_text_color"
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:id="@+id/pick_dish_picked_dish_weight"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="гр"
+            android:text="@string/grams"
             android:textColor="@color/my_text_color"
             android:layout_centerVertical="true"
             android:textSize="16sp"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
     <ListView
         android:layout_width="wrap_content"
@@ -61,19 +64,24 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:background="@null"
             android:src="@drawable/ok_button"
             android:scaleType="centerInside"
-            android:id="@+id/pick_dish_OK_button"/>
+            android:id="@+id/pick_dish_OK_button"
+            android:contentDescription="@string/set"/>
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="60dp"
+            android:layout_marginStart="60dp"
             android:background="@null"
             android:src="@drawable/cancel_button"
             android:scaleType="centerInside"
             android:layout_toRightOf="@id/pick_dish_OK_button"
-            android:id="@+id/pick_dish_cancel_button"/>
+            android:layout_toEndOf="@id/pick_dish_OK_button"
+            android:id="@+id/pick_dish_cancel_button"
+            android:contentDescription="@string/cancel"/>
     </RelativeLayout>
 
 </LinearLayout>

@@ -7,12 +7,12 @@
         style="@style/header_style">
         <TextView
             style="@style/header_text"
-            android:text = "Блюда">
+            android:text = "@string/dishes">
         </TextView>
         <Button
             style="@style/header_button"
             android:id="@+id/from_dishes_to_menu"
-            android:text="В Меню">
+            android:text="@string/to_menu">
         </Button>
     </RelativeLayout>
     <RelativeLayout
@@ -27,10 +27,12 @@
             android:background="@null"
             android:scaleType="centerInside"
             android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
             android:layout_centerVertical="true"
             android:id="@+id/db_dish_add"
             android:onClick="onCreateDish"
-            android:src="@drawable/add_item"/>
+            android:src="@drawable/add_item"
+            android:contentDescription="@string/create" />
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -38,10 +40,13 @@
             android:scaleType="centerInside"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
             android:id="@+id/db_dish_delete"
             android:onClick="onDeleteDish"
-            android:src="@drawable/delete_item"/>
+            android:src="@drawable/delete_item"
+            android:contentDescription="@string/delete" />
         <ImageButton
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -49,10 +54,13 @@
             android:scaleType="centerInside"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/db_dish_delete"
+            android:layout_toStartOf="@id/db_dish_delete"
             android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             android:id="@+id/db_dish_edit"
             android:onClick="onEditDish"
-            android:src="@drawable/edit"/>
+            android:src="@drawable/edit"
+            android:contentDescription="@string/edit" />
     </RelativeLayout>
     <ListView
         android:layout_width="wrap_content"

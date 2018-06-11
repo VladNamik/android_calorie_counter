@@ -9,12 +9,12 @@
         style="@style/header_style">
         <TextView
             style="@style/header_text"
-            android:text = "Меню">
+            android:text = "@string/menu">
         </TextView>
         <Button
             style="@style/header_button"
             android:id="@+id/from_menu_to_diary"
-            android:text="В Дневник">
+            android:text="@string/to_diary">
         </Button>
     </RelativeLayout>
     <ScrollView
@@ -23,7 +23,7 @@
         android:id="@+id/scroll_view_menu">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal">
             <View
@@ -38,37 +38,37 @@
                 <Button
                     android:id="@+id/from_menu_to_diary_menu"
                     style="@style/menu_button"
-                    android:text="Дневник"
+                    android:text="@string/diary"
                     >
                 </Button>
                 <Button
                     android:id="@+id/from_menu_to_profile"
                     style="@style/menu_button"
-                    android:text="Профиль"
+                    android:text="@string/profile"
                     >
                 </Button>
                 <Button
                     android:id="@+id/from_menu_to_dishes"
                     style="@style/menu_button"
-                    android:text="Блюда"
+                    android:text="@string/dishes"
                     >
                 </Button>
                 <Button
                     android:id="@+id/from_menu_to_exercises"
                     style="@style/menu_button"
-                    android:text="Тренировки"
+                    android:text="@string/exercises"
                     >
                 </Button>
                 <Button
                     android:id="@+id/from_menu_to_statistic"
                     style="@style/menu_button"
-                    android:text="Статистика"
+                    android:text="@string/statistic"
                     >
                 </Button>
                 <Button
                     android:id="@+id/exit"
                     style="@style/menu_button"
-                    android:text="Выход"
+                    android:text="@string/exit"
                     android:onClick="onExitButton"
                     >
                 </Button>

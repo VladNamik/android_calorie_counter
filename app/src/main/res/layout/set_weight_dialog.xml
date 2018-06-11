@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@id/set_weight_dialog_center"
+        android:layout_toStartOf="@id/set_weight_dialog_center"
         android:layout_marginTop="64dp" />
     <NumberPicker
         android:id="@+id/set_weight_dialog_number_1"
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@id/set_weight_dialog_number_2"
+        android:layout_toStartOf="@id/set_weight_dialog_number_2"
         android:layout_marginTop="64dp" />
     <NumberPicker
         android:id="@+id/set_weight_dialog_number_3"
@@ -33,6 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/set_weight_dialog_center"
+        android:layout_toEndOf="@id/set_weight_dialog_center"
         android:layout_marginTop="64dp" />
     <NumberPicker
         android:id="@+id/set_weight_dialog_number_4"
@@ -40,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/set_weight_dialog_number_3"
+        android:layout_toEndOf="@id/set_weight_dialog_number_3"
         android:layout_marginTop="64dp" />
     <Button
         android:id="@+id/set_weight_dialog_cancel_button"
@@ -47,10 +51,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/set_weight_dialog_center"
         android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="170dp"
         android:layout_toRightOf="@+id/set_weight_dialog_center"
+        android:layout_toEndOf="@+id/set_weight_dialog_center"
         android:textAllCaps="false"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 
     <Button
         android:id="@+id/set_weight_dialog_OK_button"
@@ -59,7 +65,9 @@
         android:layout_alignBaseline="@+id/set_weight_dialog_cancel_button"
         android:layout_alignBottom="@+id/set_weight_dialog_cancel_button"
         android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_toLeftOf="@+id/set_weight_dialog_center"
+        android:layout_toStartOf="@+id/set_weight_dialog_center"
         android:textAllCaps="false"
-        android:text="Set" />
+        android:text="@string/set" />
 </RelativeLayout>

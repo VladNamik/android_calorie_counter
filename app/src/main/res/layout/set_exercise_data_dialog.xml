@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/set_exercise_data_dialog_sek_layout"
         android:layout_toLeftOf="@id/set_exercise_data_dialog_center"
+        android:layout_toStartOf="@id/set_exercise_data_dialog_center"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="vertical"
@@ -32,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text="сек"
+            android:text="@string/seconds"
             android:gravity="center_horizontal"
             android:id="@+id/set_exercise_data_dialog_sek_text"
             />
@@ -42,6 +43,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/set_exercise_data_dialog_minute_layout"
         android:layout_toLeftOf="@id/set_exercise_data_dialog_sek_layout"
+        android:layout_toStartOf="@id/set_exercise_data_dialog_sek_layout"
         android:layout_alignParentTop="true"
         android:layout_marginTop="64dp"
         android:orientation="vertical">
@@ -53,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text="мин"
+            android:text="@string/minutes"
             android:gravity="center_horizontal"
             android:id="@+id/set_exercise_data_dialog_minute_text"
             />
@@ -63,8 +65,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/set_exercise_data_dialog_quantity_layout"
         android:layout_toRightOf="@id/set_exercise_data_dialog_center"
+        android:layout_toEndOf="@id/set_exercise_data_dialog_center"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="64dp"
         android:orientation="vertical">
         <NumberPicker
@@ -76,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:text="раз"
+            android:text="@string/times"
             android:gravity="center_horizontal"
             android:id="@+id/set_exercise_data_dialog_quantity_text"
             />
@@ -87,10 +91,12 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/set_exercise_data_dialog_center"
         android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="220dp"
         android:layout_toRightOf="@+id/set_exercise_data_dialog_center"
+        android:layout_toEndOf="@+id/set_exercise_data_dialog_center"
         android:textAllCaps="false"
-        android:text="Cancel" />
+        android:text="@string/cancel" />
 
     <Button
         android:id="@+id/set_exercise_data_dialog_OK_button"
@@ -99,7 +105,9 @@
         android:layout_alignBaseline="@+id/set_exercise_data_dialog_cancel_button"
         android:layout_alignBottom="@+id/set_exercise_data_dialog_cancel_button"
         android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_toLeftOf="@+id/set_exercise_data_dialog_center"
+        android:layout_toStartOf="@+id/set_exercise_data_dialog_center"
         android:textAllCaps="false"
-        android:text="Set" />
+        android:text="@string/set" />
 </RelativeLayout>

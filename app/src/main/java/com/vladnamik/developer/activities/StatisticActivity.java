@@ -36,7 +36,7 @@ public class StatisticActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistic);
         findViewById(R.id.from_statistic_to_menu).setOnClickListener(new ToWindowOnClickWithClosing(this, MyMenuActivity.class));
-        barChart = (BarChart) findViewById(R.id.statistic_histogram);
+        barChart = findViewById(R.id.statistic_histogram);
         db = DataBase.getDataBase(this);
         profile = Profile.getProfile(this);
         showDiagram();
@@ -61,7 +61,7 @@ public class StatisticActivity extends AppCompatActivity {
 
     private void showDayDiagram() {
         ArrayList<BarEntry> entries = new ArrayList<>();
-        ArrayList<String> labels = new ArrayList<String>();
+        ArrayList<String> labels = new ArrayList<>();
         Day day = db.getDay(new MyDate());
         int i = 0;
         for (Map.Entry<Dish, Integer> entry : day.getDishes().entrySet()) {
@@ -72,13 +72,13 @@ public class StatisticActivity extends AppCompatActivity {
         BarData data = new BarData(labels, dataset);
         barChart.setData(data);
         barChart.animateY(3000);
-        barChart.setDescription("Калории, потраченные на блюдо за день");
+        barChart.setDescription(getString(R.string.day_diagram_description));
         barChart.notifyDataSetChanged();
     }
 
     private void showWeekDiagram() {
         ArrayList<BarEntry> entries = new ArrayList<>();
-        ArrayList<String> labels = new ArrayList<String>();
+        ArrayList<String> labels = new ArrayList<>();
         MyDate date = new MyDate();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -94,7 +94,7 @@ public class StatisticActivity extends AppCompatActivity {
         BarData data = new BarData(labels, dataset);
         barChart.setData(data);
         barChart.animateY(2000);
-        barChart.setDescription("Калории, набранные за неделю");
+        barChart.setDescription(getString(R.string.week_diagram_description));
         barChart.notifyDataSetChanged();
     }
 
@@ -116,7 +116,7 @@ public class StatisticActivity extends AppCompatActivity {
         BarData data = new BarData(labels, dataset);
         barChart.setData(data);
         barChart.animateY(2000);
-        barChart.setDescription("Калории, набранные за месяц");
+        barChart.setDescription(getString(R.string.month_diagram_description));
         barChart.notifyDataSetChanged();
     }
 
@@ -130,7 +130,7 @@ public class StatisticActivity extends AppCompatActivity {
         date = new MyDate(calendar.getTime());
         Day day;
         long calories_per_month;
-        int daysInMonth = 0;
+        int daysInMonth;
         for (int j = 0; j < 12; j++) {
             calories_per_month = 0;
             daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -149,15 +149,15 @@ public class StatisticActivity extends AppCompatActivity {
         BarData data = new BarData(labels, dataset);
         barChart.setData(data);
         barChart.animateY(2000);
-        barChart.setDescription("Калории за месяц в среднем по каждому месяцу");
+        barChart.setDescription(getString(R.string.year_diagram_description));
         barChart.notifyDataSetChanged();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, DAY_DIAGRAM, 0, "За день");
-        menu.add(0, WEEK_DIAGRAM, 1, "За неделю");
-        menu.add(0, MONTH_DIAGRAM, 2, "За месяц");
-        menu.add(0, YEAR_DIAGRAM, 3, "За год");
+        menu.add(0, DAY_DIAGRAM, 0, getString(R.string.for_day));
+        menu.add(0, WEEK_DIAGRAM, 1, getString(R.string.for_week));
+        menu.add(0, MONTH_DIAGRAM, 2, getString(R.string.for_month));
+        menu.add(0, YEAR_DIAGRAM, 3, getString(R.string.for_year));
         return super.onCreateOptionsMenu(menu);
     }
 

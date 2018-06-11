@@ -38,14 +38,21 @@ public class DataBase {
     public static final String DAYS_EXERCISE_COLUMN_QUANTITY = "quantity";
     public static final String DAYS_DISH_COLUMN_WEIGHT = "weight";
 
+    private static final String sampleExercisesNames[] = {"Pulling up the rear grip", "Push-ups", "Jumping rope", "Running on the spot", "Pulling up the front grip", "Squats"};
+    private static final int sampleExercisesTimeCoeff[] = {1, 1, 0, 0, 4, 6};
+    private static final int sampleExercisesQuantityCoeff[] = {12, 7, 4, 0, 0, 6};
+    private static final String sampleDishesNames[] = {"Rice", "Army noodles", "Potato", "Hot dog", "Tea", "Cucumbers", "Lemon", "Apple"};
+    private static final int sampleDishesCalories[] = {117, 248, 148, 44, 785, 154, 556, 232};
+
+
     public static final int MAX_RECORD_WIDTH = 700;
-    public static int dishSortId = 0;//позволит при обновлении экрана сохранять необходимую нам сортировку для блюд
+    public static int dishSortId = 0; // will allow to keep the sorting we need for dishes when updating the screen
     public static int exercisesSortId = 0;
 
     private static Context context;
     private static DataBase database;
-    private static DBHelper dbHelper;//необходим для создания и обновления БД
-    private static SQLiteDatabase mDB;//управление БД
+    private static DBHelper dbHelper; // required to create and update the database
+    private static SQLiteDatabase mDB; // database management
 
     private DataBase(Context context) {
         DataBase.context = context;
@@ -363,35 +370,30 @@ public class DataBase {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
-            db.execSQL("create table " + DISH_TABLE + " ( " + COLUMN_ID + " integer, " + DISH_COLUMN_NAME + " text primary key," + DISH_COLUMN_CALORIES_PER_100_GM + " integer not null" + ");");//создаём таблицу dishes
-            db.execSQL("create table " + EXERCISE_TABLE + " ( " + COLUMN_ID + " integer, " + EXERCISE_COLUMN_NAME + " text primary key, " + EXERCISE_COLUMN_TIME_COEFF + " integer default 0," + EXERCISE_COLUMN_QUANTITY_COEFF + " integer default 0" + ");");//создаём таблицу exercises
-            db.execSQL("create table " + DAYS_DISHES_TABLE + " ( " + DAYS_COLUMN_DATE + " integer, " + DISH_COLUMN_NAME + " text, " + DAYS_DISH_COLUMN_WEIGHT + " integer default 100," + "FOREIGN KEY(" + DAYS_COLUMN_DATE + ") REFERENCES " + DAYS_TABLE + "(" + DAYS_COLUMN_DATE + "), FOREIGN KEY(" + DISH_COLUMN_NAME + ") REFERENCES " + DISH_TABLE + "(" + DISH_COLUMN_NAME + ") " + ");");//создаем таблицу days_dishes
-            db.execSQL("create table " + DAYS_EXERCISE_TABLE + " ( " + DAYS_COLUMN_DATE + " integer, " + EXERCISE_COLUMN_NAME + " text, " + DAYS_EXERCISE_COLUMN_TIME + " integer default 0," + DAYS_EXERCISE_COLUMN_QUANTITY + " integer default 0," + "FOREIGN KEY(" + DAYS_COLUMN_DATE + ") REFERENCES " + DAYS_TABLE + "(" + DAYS_COLUMN_DATE + "), FOREIGN KEY(" + EXERCISE_COLUMN_NAME + ") REFERENCES " + EXERCISE_TABLE + "(" + EXERCISE_COLUMN_NAME + ") " + ");");//создаем таблицу days_exercises
-            db.execSQL("create table " + DAYS_TABLE + " ( " + DAYS_COLUMN_DATE + " integer primary key, " + DAYS_COLUMN_RECORD + " varchar(" + MAX_RECORD_WIDTH + ") default ''" + ");");//создаём таблицу days
-            defaultFillExerciseTable(db);//заполняем таблицу упражнений
-            defaultFillDishTable(db);//заполняем таблицу блюд
+            db.execSQL("create table " + DISH_TABLE + " ( " + COLUMN_ID + " integer, " + DISH_COLUMN_NAME + " text primary key," + DISH_COLUMN_CALORIES_PER_100_GM + " integer not null" + ");"); // create table dishes
+            db.execSQL("create table " + EXERCISE_TABLE + " ( " + COLUMN_ID + " integer, " + EXERCISE_COLUMN_NAME + " text primary key, " + EXERCISE_COLUMN_TIME_COEFF + " integer default 0," + EXERCISE_COLUMN_QUANTITY_COEFF + " integer default 0" + ");"); // create table exercises
+            db.execSQL("create table " + DAYS_DISHES_TABLE + " ( " + DAYS_COLUMN_DATE + " integer, " + DISH_COLUMN_NAME + " text, " + DAYS_DISH_COLUMN_WEIGHT + " integer default 100," + "FOREIGN KEY(" + DAYS_COLUMN_DATE + ") REFERENCES " + DAYS_TABLE + "(" + DAYS_COLUMN_DATE + "), FOREIGN KEY(" + DISH_COLUMN_NAME + ") REFERENCES " + DISH_TABLE + "(" + DISH_COLUMN_NAME + ") " + ");");//create table days_dishes
+            db.execSQL("create table " + DAYS_EXERCISE_TABLE + " ( " + DAYS_COLUMN_DATE + " integer, " + EXERCISE_COLUMN_NAME + " text, " + DAYS_EXERCISE_COLUMN_TIME + " integer default 0," + DAYS_EXERCISE_COLUMN_QUANTITY + " integer default 0," + "FOREIGN KEY(" + DAYS_COLUMN_DATE + ") REFERENCES " + DAYS_TABLE + "(" + DAYS_COLUMN_DATE + "), FOREIGN KEY(" + EXERCISE_COLUMN_NAME + ") REFERENCES " + EXERCISE_TABLE + "(" + EXERCISE_COLUMN_NAME + ") " + ");");//create table days_exercises
+            db.execSQL("create table " + DAYS_TABLE + " ( " + DAYS_COLUMN_DATE + " integer primary key, " + DAYS_COLUMN_RECORD + " varchar(" + MAX_RECORD_WIDTH + ") default ''" + ");");//create table days
+            defaultFillExerciseTable(db); // fill table of exercises
+            defaultFillDishTable(db); // fill table of dishes
         }
 
         private void defaultFillExerciseTable(SQLiteDatabase db) {
             ContentValues cv = new ContentValues();
-            String exercisesNames[] = {"Подтягивания задним хватом", "Отжимания в упоре лёжа", "Прыжки на скакалке", "Бег на месте", "Подтягивания передним хватом", "Приседания"};
-            int exercisesTimeCoeff[] = {1, 1, 0, 0, 4, 6};
-            int exercisesQuantityCoeff[] = {12, 7, 4, 0, 0, 6};
-            for (int i = 0; i < exercisesNames.length; i++) {
-                cv.put(EXERCISE_COLUMN_NAME, exercisesNames[i]);
-                cv.put(EXERCISE_COLUMN_TIME_COEFF, exercisesTimeCoeff[i]);
-                cv.put(EXERCISE_COLUMN_QUANTITY_COEFF, exercisesQuantityCoeff[i]);
+            for (int i = 0; i < sampleExercisesNames.length; i++) {
+                cv.put(EXERCISE_COLUMN_NAME, sampleExercisesNames[i]);
+                cv.put(EXERCISE_COLUMN_TIME_COEFF, sampleExercisesTimeCoeff[i]);
+                cv.put(EXERCISE_COLUMN_QUANTITY_COEFF, sampleExercisesQuantityCoeff[i]);
                 db.insert(EXERCISE_TABLE, null, cv);
             }
         }
 
         private void defaultFillDishTable(SQLiteDatabase db) {
             ContentValues cv = new ContentValues();
-            String dishesNames[] = {"Рис", "Макароны по флотски", "Пюре из картофеля", "Сосиска в тесте", "Чай", "Огурцы", "Лимон", "Яблоко"};
-            int dishesCalories[] = {117, 248, 148, 44, 785, 154, 556, 232};
-            for (int i = 0; i < dishesNames.length; i++) {
-                cv.put(DISH_COLUMN_NAME, dishesNames[i]);
-                cv.put(DISH_COLUMN_CALORIES_PER_100_GM, dishesCalories[i]);
+            for (int i = 0; i < sampleDishesNames.length; i++) {
+                cv.put(DISH_COLUMN_NAME, sampleDishesNames[i]);
+                cv.put(DISH_COLUMN_CALORIES_PER_100_GM, sampleDishesCalories[i]);
                 db.insert(DISH_TABLE, null, cv);
             }
         }

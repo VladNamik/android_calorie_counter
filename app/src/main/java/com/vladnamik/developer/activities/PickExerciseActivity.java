@@ -21,10 +21,10 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class PickExerciseActivity extends AppCompatActivity {
-    private DataBase db;//объект БД
+    private DataBase db;
     private Map<String, Object> map;
-    private ArrayList<Map<String, Object>> data;//основные данные
-    private SimpleAdapter sAdapter;//адаптер
+    private ArrayList<Map<String, Object>> data;
+    private SimpleAdapter sAdapter;
     private long selectedElementId = -1;
     ListView listView;
     public static MyDate date;
@@ -35,15 +35,14 @@ public class PickExerciseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pick_exercise);
 
-        db = DataBase.getDataBase(this);//открваем БД
+        db = DataBase.getDataBase(this);
         data = DataBase.cursorToArrayList(db.getExercises());
 
-        // формируем столбцы сопоставления
-        String[] from = new String[]{DataBase.EXERCISE_COLUMN_NAME, DataBase.DAYS_EXERCISE_COLUMN_TIME};//названия колонок
-        int[] to = new int[]{R.id.db_item_name, R.id.db_item_right_text};//места для записи (View id)
+        String[] from = new String[]{DataBase.EXERCISE_COLUMN_NAME, DataBase.DAYS_EXERCISE_COLUMN_TIME};
+        int[] to = new int[]{R.id.db_item_name, R.id.db_item_right_text};
 
         sAdapter = new SimpleAdapter(this, data, R.layout.database_item, from, to);
-        listView = (ListView) findViewById(R.id.pick_exercise_list);
+        listView = findViewById(R.id.pick_exercise_list);
         listView.setAdapter(sAdapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -91,13 +90,13 @@ public class PickExerciseActivity extends AppCompatActivity {
     protected Dialog onCreateDialog(int id) {
         if (id == SET_EXERCISE_DATA) {
             final Dialog dialog = new Dialog(this);
-            dialog.setTitle("Введите время и количество");
+            dialog.setTitle(getString(R.string.enter_exercise_time_quantity));
             dialog.setContentView(R.layout.set_exercise_data_dialog);
-            Button okButton = (Button) dialog.findViewById(R.id.set_exercise_data_dialog_OK_button);
-            Button cancelButton = (Button) dialog.findViewById(R.id.set_exercise_data_dialog_cancel_button);
-            final NumberPicker minuteNumber = (NumberPicker) dialog.findViewById(R.id.set_exercise_data_dialog_set_minute);
-            final NumberPicker sekNumber = (NumberPicker) dialog.findViewById(R.id.set_exercise_data_dialog_set_sek);
-            final NumberPicker quantityNumber = (NumberPicker) dialog.findViewById(R.id.set_exercise_data_dialog_set_quantity);
+            Button okButton = dialog.findViewById(R.id.set_exercise_data_dialog_OK_button);
+            Button cancelButton = dialog.findViewById(R.id.set_exercise_data_dialog_cancel_button);
+            final NumberPicker minuteNumber = dialog.findViewById(R.id.set_exercise_data_dialog_set_minute);
+            final NumberPicker sekNumber = dialog.findViewById(R.id.set_exercise_data_dialog_set_sek);
+            final NumberPicker quantityNumber = dialog.findViewById(R.id.set_exercise_data_dialog_set_quantity);
             minuteNumber.setMaxValue(59);
             minuteNumber.setMinValue(0);
             sekNumber.setMaxValue(59);

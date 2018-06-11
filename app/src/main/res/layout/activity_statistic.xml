@@ -7,12 +7,12 @@
         style="@style/header_style">
         <TextView
             style="@style/header_text"
-            android:text = "Статистика">
+            android:text = "@string/statistic">
         </TextView>
         <Button
             style="@style/header_button"
             android:id="@+id/from_statistic_to_menu"
-            android:text="В Меню">
+            android:text="@string/to_menu">
         </Button>
     </RelativeLayout>
     <com.github.mikephil.charting.charts.BarChart
