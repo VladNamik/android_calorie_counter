@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/background_style"
-    tools:context="ru.startandroid.myapplication.DishActivity">
+    tools:context="com.vladnamik.developer.activities.DishActivity">
     <RelativeLayout
         style="@style/header_style">
         <TextView

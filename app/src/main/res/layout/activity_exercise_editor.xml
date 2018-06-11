@@ -10,7 +10,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     style="@style/background_style"
     android:orientation="vertical"
-    tools:context="ru.startandroid.myapplication.ExerciseEditorActivity">
+    tools:context="com.vladnamik.developer.activities.ExerciseEditorActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

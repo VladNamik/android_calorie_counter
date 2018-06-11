@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_diary"
-    tools:context=".DiaryActivity"
+    tools:context=".activities.DiaryActivity"
     style="@style/background_style">
     <RelativeLayout
         style="@style/header_style">
@@ -110,7 +110,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_marginRight="30dp"
-                    android:src="@drawable/add_dish3"
+                    android:src="@drawable/add_dish"
                     android:scaleType="centerInside"
                     android:background="@null"
                     android:id="@+id/diary_dish_add_button"/>
@@ -120,7 +120,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="30dp"
                     android:scaleType="centerInside"
-                    android:src="@drawable/add_exercise3"
+                    android:src="@drawable/add_exercise"
                     android:background="@null"
                     android:id="@+id/diary_exercise_add_button"/>
             </LinearLayout>

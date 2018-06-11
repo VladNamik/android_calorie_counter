@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.startandroid.myapplication" >
+    package="com.vladnamik.developer" >
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".DiaryActivity"
+            android:name="com.vladnamik.developer.activities.DiaryActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" >
@@ -20,37 +20,37 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MyMenuActivity"
+            android:name="com.vladnamik.developer.activities.MyMenuActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.vladnamik.developer.activities.ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name=".DishActivity"
+            android:name="com.vladnamik.developer.activities.DishActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name=".ExerciseActivity"
+            android:name="com.vladnamik.developer.activities.ExerciseActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
-            android:name=".StatisticActivity"
+            android:name="com.vladnamik.developer.activities.StatisticActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" >
         </activity>
-        <activity android:name=".ExerciseEditorActivity" >
+        <activity android:name="com.vladnamik.developer.activities.ExerciseEditorActivity" >
         </activity>
-        <activity android:name=".DishesEditorActivity" >
+        <activity android:name="com.vladnamik.developer.activities.DishesEditorActivity" >
         </activity>
-        <activity android:name=".PickDishActivity" >
+        <activity android:name="com.vladnamik.developer.activities.PickDishActivity" >
         </activity>
-        <activity android:name=".PickExerciseActivity" >
+        <activity android:name="com.vladnamik.developer.activities.PickExerciseActivity" >
         </activity>
     </application>
 
